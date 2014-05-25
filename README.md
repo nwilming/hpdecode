@@ -27,9 +27,9 @@ discretized area, so you might want to start by plotting the two.
 
 
 Interesting points to investigate:
-    - Dependence of decoding strategy on firing rate of place fields
-    - What happens if we have non poisson neurons?
-    - Look at different arena geometries.
-    - What happens when the place fields are not nicely Gaussian anymore?
-    - What if they are not even continuous in space anymore?
+  * Dependence of decoding strategy on firing rate of place fields
+  * What happens if we have non poisson neurons?
+  * Look at different arena geometries.
+  * What happens when the place fields are not nicely Gaussian anymore?
+  * What if they are not even continuous in space anymore?
 
