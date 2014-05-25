@@ -14,11 +14,13 @@ Journal of NeurophysiologyPublished 1 February 1998Vol. 79no. 1017-1044
 
 This is how to get started:
 
->>> import reconstruct as rc
->>> pfields, arena, aX, aY, centers = rc.setup()
->>> rates, spikes = rc.simulate_spikes(pfields, 5,5)
->>> posterior = rc.decode_bayes(pfields, spikes, arena)
->>> activity = rc.decode_directbasis(pfields, spikes, arena)
+```python
+import reconstruct as rc
+pfields, arena, aX, aY, centers = rc.setup()
+rates, spikes = rc.simulate_spikes(pfields, 5,5)
+posterior = rc.decode_bayes(pfields, spikes, arena)
+activity = rc.decode_directbasis(pfields, spikes, arena)
+```
 
 And now posterior and activity contain the estimates for locations in the
 discretized area, so you might want to start by plotting the two.
