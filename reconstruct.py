@@ -11,8 +11,8 @@ Example of bayesian reconstruction for place cell data
 
 def place_field(pos, covariance, firing_rate=10,baseline=1):
     '''
-    Creates a 2D Gaussian place field with center pos and 
-    covariance matrix. The max is scalled to firing_rate. 
+    Creates a 2D Gaussian place field with center pos and
+    covariance matrix. The max is scalled to firing_rate.
     Baseline gives the baseline firing rate.
     '''
     mv = multivariate_normal(pos, covariance)
@@ -55,9 +55,9 @@ def simulate_spikes(pfields, rx, ry):
 
 def prior(arena):
     '''
-    Compute log prior, either with two step position 
-    dependen, or just uniform.
-    
+    Compute log prior, either with two step position
+    dependent, or just uniform.
+
     This would be the thing to change to include the two step prior.
     '''
     return  log(arena[:,:,0]/prod(arena.shape[:2]))
@@ -70,8 +70,8 @@ def likelihood(pfields, spikes, arena):
     '''
     acc = 0*arena[:,:,0].flatten()
     for spikes, pfield in zip(spikes, pfields):
-        rate = pfield(arena) 
-        p_n_x = poisson.pmf(spikes,rate.flatten()) 
+        rate = pfield(arena)
+        p_n_x = poisson.pmf(spikes,rate.flatten())
         acc += log(p_n_x)
     return acc.reshape(arena.shape[:2])
 
@@ -79,7 +79,7 @@ def decode_bayes(pfields, spikes, arena, last_pos=None):
     '''
     Use bayesian approach for decoding.
     '''
-    return exp(likelihood(pfields, spikes, arena) + prior(arena, last_pos))
+    return exp(likelihood(pfields, spikes, arena) + prior(arena))
 
 def decode_directbasis(pfields, spikes, arena):
     '''
@@ -127,7 +127,7 @@ def visualize():
         pp.ylim([-.5,10.5])
         pp.xlim([-.5,10.5])
         remove_spines(pp.gca())
-        
+
         pp.subplot(1,2,2)
         a = decode_directbasis(pfields, obs_spikes, arena)
         pp.contour(aX,aY,a)
@@ -144,5 +144,3 @@ def visualize():
         pp.xlim([-.5,10.5])
         remove_spines(pp.gca())
         yield(handles)
-
-
